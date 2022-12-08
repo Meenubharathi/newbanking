@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="text" id="name">
+<button type="button" onclick="myFunction()">Submit</button>
+
+<script>
+var obj={};
+obj={"Ram":["kid1","kid2","kid3"],"kid1":["abi","ammu"],"kid2":["sam"]};
+var count=0;
+function myFunction()
+{
+var name=document.getElementById("name").value;
+var array=obj[name];
+
+for(var father of array)
+	{
+		var childs=obj[father];
+	
+		if(!childs)
+			{
+				break;
+			}
+		count += childs.length;
+		document.write(childs+"<br>");
+	}
+/*for(let i=0;i<array.length;i++)
+	{
+	   var child=array[i];
+	   count=count+obj[child].length;
+	   document.write(obj[child]+"<br>");
+	}*/
+   document.write("<p>number :</p>"+count);
+
+
+		} 
+	</script>
+</body>
+</html>

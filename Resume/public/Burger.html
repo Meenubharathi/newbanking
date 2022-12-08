@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Burger Shop</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+.center 
+{
+  margin-left: auto; 
+  margin-right: auto;
+}
+table 
+{
+  font-family: arial, sans-serif;
+  border-radius: 20px;
+  width: 40%;
+  border: 1px solid black;
+  border-collapse:collapse;
+}
+td
+{
+    text-align: left;
+    padding:10px;
+}
+th
+{
+    text-align: center;
+    padding: 8px;
+}
+</style>
+</head>
+<body>
+<h1 align="center">Welcome to burger shop</h1>
+<table class="center">
+    
+      <tr><td> <input type="radio" name="option" id="normal">
+            Order ‘burger’ off the day</td></tr>
+              
+      <tr><td><input type="radio" name="option" id="own">
+            Order your own burger</td></tr>
+            
+      <tr><td><input type="radio" name="option" id="exit">
+             Exit</td></tr>
+      <tr><td>  <button type="button" class="reset">reset</button> </td></tr>
+   </table>
+   
+   
+        <div id="menu" style="display:none">
+     <ol>
+     <li> <input type="radio" name="menu" id="veg">
+            Veg Burger</li>
+              
+      <li><input type="radio" name="menu" id="non-veg">
+            Non-Veg Burger</li>
+    </ol> 
+          </div>
+            
+            
+   
+   
+      
+<div  id="normalBurger" style="display:none">
+<h1 align="center">Invoice for burger</h1>
+<table class="center">
+<tr><td>Crust-Hard</td><td>Rs. 10 </td></tr>
+<tr><td>Filling-Chicken Tikka</td><td>Rs. 120 </td></tr>
+<tr><td>Topping-Cucumber</td><td>Rs. 25 </td>
+<tr><td>Topping-Meat Strip</td><td>Rs.45 </td></tr>
+<tr><td>Topping-Cabbage</td><td>Rs. 0 </td><tr>
+<tr><td>Total</td><td>200 ₹</td>
+</table>
+<p align="center"> Topping-Cabbage is complementary </p>
+<p align="center"><button type="button">Confirm</button>
+</div>
+      
+ <div id="ownBurger" style="display:none">
+  <h1>Select “Crust” (max of 1)</h1>
+  <div id="crust">
+  <ol>
+       <li> <input type="radio" name="option"  value="hard">
+            Hard-Rs.10</li>
+              
+      <li>  <input type="radio" name="option"  value="thin">
+            Thin-Rs.10</li>
+            
+      <li>  <input type="radio" name="option"  value="soft">
+            Soft-Rs.12</li>
+  
+   </ol>
+   </div>
+<h1>Select “Filling” (max of 1)</h1> 
+<div id="filling"> 
+    <ol>
+       <li> <input type="radio" name="options" value="chicken">
+            Chicken Tikka -Rs. 120</li>
+              
+      <li>  <input type="radio" name="options" value="paneer">
+            Paneer Tikka -Rs. 100 </li>
+            
+      <li>  <input type="radio" name="options" value="turkey">
+            Turkey Meat -Rs. 130 </li>
+  
+   </ol>
+   </div>
+ <h1>Select “Toppings” (max of 3)</h1>  
+ <div id="toppings">
+      <ol>
+        <li> <input type="checkbox" name="option"  value="cucumber">
+            Cucumber -Rs. 25 </li>
+              
+      <li>  <input type="checkbox" name="option"  value="tomato">
+            Tomato -Rs. 20 </li>
+            
+      <li>  <input type="checkbox" name="option"  value="meat">
+            Meat strip -Rs. 45 </li>
+      
+       <li>  <input type="checkbox" name="option" value="cabbage">
+            Cabbage-Rs. 20 </li>
+  
+      </ol>
+      </div>
+       <button type="button" class="submit">submit</button> 
+       <table id="finaltable"></table>
+ </div> 
+ 
+ <div id="VegBurger" style="display:none">
+ <h1>Select “Crust” (max of 1)</h1>
+ <div id="vegCrust">
+  <ol>
+       <li> <input type="radio" name="option"  value="hard">
+            Hard-Rs.10</li>
+              
+      <li>  <input type="radio" name="option"  value="thin">
+            Thin-Rs.10</li>
+            
+      <li>  <input type="radio" name="option"  value="soft">
+            Soft-Rs.12</li>
+  
+   </ol>
+   </div>
+<h1>Select “Filling” (max of 1)</h1> 
+<div id="vegFilling"> 
+    <ol>
+       <li>  <input type="radio" name="options"  value="paneer">
+            Paneer Tikka -Rs. 100 </li>
+            
+      <li>  <input type="radio" name="options"  value="corn">
+            Corn Tikka -Rs. 100 </li>
+  
+   </ol>
+   </div>
+ <h1>Select “Toppings” (max of 3)</h1>  
+ <div id="vegtoppings">
+      <ol>
+        <li> <input type="checkbox" name="option"  value="cucumber">
+            Cucumber -Rs. 25 </li>
+              
+      <li>  <input type="checkbox" name="option"  value="tomato">
+            Tomato -Rs. 20 </li>
+            
+      <li>  <input type="checkbox" name="option" value="cabbage">
+            Cabbage-Rs. 20 </li>
+  
+      </ol>
+      </div>
+      <button type="button" class="submit">submit</button>
+       </div>     
+     
+ <script>
+ var crust={"hard":10,"thin":10,"soft":12}; 
+ var filling={chicken:120,paneer:100,turkey:130,corn:100};
+ var toppings={cucumber:25,tomato:20,cabbage:20,meat:45};
+ var burger;
+ $(document).ready(function () {
+       $("#normal").click(function(){
+    	    $("#normalBurger").toggle();
+    	  });
+
+         $("#own").click(function () {
+        	 $("#menu").toggle();
+         });
+         
+         $("#veg").click(function () {
+        	 $("#VegBurger").toggle();
+         });
+         
+         $("#non-veg").click(function () {
+        	 $("#ownBurger").toggle();
+         });
+         
+        /* $("#crust").click(function () {
+        	c = $("input[type='radio'][name='option']:checked").val();
+         });
+        		 
+         $("#filling").click(function () {
+         	f = $("input[type='radio'][name='options']:checked").val();
+          });
+         
+         $("#toppings").click(function () {
+         	t1 = $("input[type='checkbox'][name='option']:checked").val();
+         	t2 = $("input[type='checkbox'][name='option']:checked").val();
+         	t3 = $("input[type='checkbox'][name='option']:checked").val();
+         	t4 = $("input[type='checkbox'][name='option']:checked").val();
+          });*/
+   
+        /* $("#vegCrust").click(function () {
+         	c = $("input[type='radio'][name='option']:checked").val();
+          });
+         		 
+          $("#vegFilling").click(function () {
+          	f = $("input[type='radio'][name='options']:checked").val();
+           });
+          
+          $("#vegtoppings").click(function () {
+            	t1 = $("input[type='checkbox'][name='option']:checked").val();
+            	t2 = $("input[type='checkbox'][name='option']:checked").val();
+            	t3 = $("input[type='checkbox'][name='option']:checked").val();
+              });*/
+        
+         $(".submit").click(function (){
+        	var c= $("input[type='radio'][name='option']:checked") .val();
+        	var f=$("input[type='radio'][name='options']:checked") .val();
+        	var t=[];
+            $("input:checkbox[name=option]:checked").each(function(){
+            	if ($('input[type=checkbox]:checked').length > 3) {
+                    $(this).prop('checked', false);
+                    alert("only 3 toppings are allowed");
+                }
+            	else
+            		{
+                      t.push($(this).val());
+                      
+            		}
+             });
+            console.log(t);
+            var result={};
+            result[c]=crust[c];
+            result[f]=filling[f];
+            for(let i=0;i<t.length;i++)
+            	{
+            	    result[t[i]]=toppings[t[i]];
+            	    console.log(result[t[i]]);
+            	}
+            console.log(result);
+            console.log(result[f]);
+            
+         /*   var table=document.createElement("table");
+            var tbody=document.createElement("tbody");
+              for(let i=0;i<6;i++)
+            	{
+            	 var tr=document.createElement("tr");
+            	 for(let j=0;j<2;j++)
+            		 {
+            		   var td=document.createElement("td");
+            		   tr.appendChild(td);
+            		 }
+            	   tbody.appendChild(tr);
+            	}
+              table.appendChild(tbody);
+              $("#finaltable").append(table);
+              table.setAttribute("border", "2");*/
+              
+              $("#finaltable").each(function(key,value)
+            		  {
+            	            var tr=document.createElement("tr");
+            	            var td=document.createElement("td");
+            	            var td=document.createElement("td");
+            		  });
+             
+              
+          });
+          
+          
+              
+          
+          
+          
+          
+             $(".next").click(function () {
+                 $("#exit").prop("checked", true);
+             });
+     
+         $(".reset").click(function () {
+             $("#normal").prop("checked", false);
+             $("#own").prop("checked", false);
+             $("#exit").prop("checked",false)
+         });
+         
+         });
+    
+</script>
+</body>
+</html>

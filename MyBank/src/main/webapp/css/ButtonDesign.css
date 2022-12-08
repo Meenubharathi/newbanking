@@ -1,0 +1,74 @@
+body
+{
+    background-color:MistyRose;
+}
+.button
+{
+ border: ridge;
+text-align: center;
+background-color:#A1C3D1;
+color:  solid Black;
+font-weight: bold; 
+cursor: pointer;
+padding: 16px 32px;
+width:200px; 
+border-radius: 12px;
+}
+.button1
+{
+text-align: center;
+border:none;
+background-color:white;
+color:  solid Black;
+cursor: pointer;
+padding: 5px ;
+width:200px;
+}
+.button1:hover
+{
+   background-color:MistyRose;
+   color:  Black;
+}
+
+.button:hover
+{
+   background-color:MistyRose;
+     color:Black;
+}
+div.fixed {
+  position: fixed;
+  top: 30px;
+  right: 50px;
+}
+.button:focus
+{
+	background-color:MistyRose;
+	color:Black;
+}
+.dropbutton 
+{
+  background-color:#A1C3D1;
+  color:black;
+  padding: 5px;
+  border-radius: 15px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.content 
+{
+  display: none;
+  position: absolute;
+  right:30px;
+ }
+
+.dropdown
+ {
+  position: relative;
+  display: inline-block;
+}
+.dropdown:hover .content
+ {
+  display: block;
+}
+
+

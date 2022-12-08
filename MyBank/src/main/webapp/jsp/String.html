@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="word">
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()" name="button" value="string">display </button>
+</div>
+
+<script>
+function loadDoc() {
+  const obj = new XMLHttpRequest();
+  obj.onload = function() {
+    document.getElementById("word").innerText =
+    this.responseText;
+  }
+  obj.open("GET", "../newServlet?click='hello'");
+  obj.send();
+}
+</script></body>
+</html>

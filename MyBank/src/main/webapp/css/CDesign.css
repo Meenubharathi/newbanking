@@ -1,0 +1,79 @@
+body
+{   
+   height:500px;
+   background: #A1C3D1;
+    
+ }
+table.center 
+{
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+table 
+{
+  font-family: arial, sans-serif;
+  border-radius: 20px;
+  width: 40%;
+  border-collapse:collapse;
+}
+td
+{
+    text-align: left;
+    padding: 10px;
+    border:none;
+}
+th
+{
+    text-align: center;
+    padding: 10px;
+    border:none;
+}
+input[type=text], input[type=email], input[type=password]
+ {
+  border:none;border-radius: 20px;
+  padding: 10px;
+  background-color:white;
+  }
+ 
+.button
+{
+border: ridge;
+border:none;border-radius: 20px;
+text-align: center;
+background-color:White;
+color:  solid Black;
+font-weight: bold; 
+cursor: pointer;
+padding: 10px 20px;
+width:200px; 
+}
+.button:hover
+{
+   background-color:#FFE4E1;
+   color:  black;
+}
+tr:nth-child(odd){background-color: #ded8db;}
+tr:nth-child(even){background-color: MistyRose;}
+
+tr:first-child th:first-child { border-top-left-radius: 20px; }
+tr:first-child th:last-child { border-top-right-radius: 20px; }
+
+
+tr:first-child td:first-child { border-top-left-radius: 20px; }
+tr:first-child td:last-child { border-top-right-radius: 20px; }
+
+tr:last-child td:first-child { border-bottom-left-radius: 20px; }
+tr:last-child td:last-child { border-bottom-right-radius: 20px; }
+
+.selectBox{
+  width:200px;
+  height:40px;
+  border:0px;
+  outline:none;
+   border-radius:20px;
+  background-color:white;
+}
+
+
+

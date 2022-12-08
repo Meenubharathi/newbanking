@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Task1</title>
+</head>
+<body>
+<h2>First Task</h2>
+<p id="demo"></p>
+<script type="text/javascript">
+var person1={father:"Ram",son:"Ravi"};
+var person2={father:"Ravi",son:"Siva"};
+var person3={father:"Siva",son:"Sam"};
+var person4={father:"Ravi",son:"Raghu"};
+var person5={father:"Raghu",son:"Tom"};
+var person6={father:"Tom",son:"Jerry"};
+var person7={father:"Ram",son:"Sita"};
+var person8={father:"Sita",son:"Sethu"};
+
+var person=[person1,person2,person3,person4,person5,person6,person7,person8];
+	
+var count=0;
+var children=[];
+for(const x in person)
+	{
+	 var name="Ram";
+	 if(person[x].father==name)
+		 {
+		   var child=person[x].son;
+		   for(const y in person)
+			   {
+			   if(person[y].father==child)
+				   {
+				     count++;
+				     
+				   }
+			    }
+		 }
+	}
+	document.write(count);
+	document.write(children);
+</script>
+</body>
+</html>

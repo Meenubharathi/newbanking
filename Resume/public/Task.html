@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>First Task</h2>
+<p>Please Enter number of pairs:</p>
+<input type="text" id="num">
+<button type="button" onclick="myFunction()">Submit</button>
+<div id="div"></div>
+
+<script>
+function myFunction() 
+{
+    let x = document.getElementById("num").value;
+   
+  for(let i=0;i<x;i++)
+	  {
+	    var father= document.createElement("input");
+	    father.setAttribute("type","text");
+	    father.setAttribute("placeholder","father");
+	    father.setAttribute("class","father");
+	    var son= document.createElement("input");
+	    son.setAttribute("type","text");
+	    son.setAttribute("placeholder","son");
+	    son.setAttribute("class","son");
+	    
+	    document.getElementById("div").append(father);
+	    document.getElementById("div").append(son);
+	    document.getElementById("div").appendChild(document.createElement('br'));
+	  }
+  
+  var add=document.createElement("input");
+  add.setAttribute("type","submit");
+  add.setAttribute("onclick","process()");
+  document.getElementById("div").append(add);
+  
+  }
+ var children;
+function process()
+{
+	var fatherName=document.getElementsByClassName("father");
+	var sonName=document.getElementsByClassName("son");
+	var num = document.getElementById("num").value;
+	   
+	children=new Map();
+	
+	for(let i=0;i<num;i++)
+	{
+	    var answer=[];
+	    answer=children.get(fatherName[i].value);
+	    if(!answer)
+	    	{
+	    	     answer=[];
+	       	}
+	  	    answer.push(sonName[i].value);
+   	        children.set(fatherName[i].value,answer);
+   	            
+	    	
+	}
+	
+	  var grandfather= document.createElement("input");
+	  grandfather.setAttribute("type","text");
+	  grandfather.setAttribute("placeholder","grandfather");
+	  grandfather.setAttribute("id","grandfather");
+	  
+	  var button=document.createElement("input");
+	  button.setAttribute("type","submit");
+	  button.setAttribute("onclick","result()")
+	  document.getElementById("div").append(grandfather);
+	  document.getElementById("div").append(button);
+
+	
+}
+function result()
+{
+	 
+     var grandfatherName=document.getElementById("grandfather").value;
+	  var result=children.get(grandfatherName);
+    	var count=0;
+	  for(var father of result)
+	  	{
+	  		var childs=children.get(father);
+	  	
+	  		if(!childs)
+	  			{
+	  				break;
+	  			}
+	  		count += childs.length;
+	  		document.write(childs+"<br>");
+	  	}
+	  document.write("<p>number :</p>"+count);
+
+}
+</script>
+</body>
+</html>
